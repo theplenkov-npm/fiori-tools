@@ -1,10 +1,11 @@
 {
   "name": "fiori-tools",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Library of extensions for Fiori tools ( @sap/ux-ui5-tooling )",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Info: no test specified\"",
+    "build": "echo \"Info: no build specified\"",
     "preversion": "npm test",
     "version": "npm run build && git add -A dist",
     "postversion": "git push && git push --tags && rm -rf build/temp"
