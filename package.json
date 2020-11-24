@@ -1,6 +1,6 @@
 {
   "name": "fiori-tools",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Library of extensions for Fiori tools ( @sap/ux-ui5-tooling )",
   "main": "index.js",
   "scripts": {
@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/ThePlenkov/fiori-tools#readme",
   "peerDependencies": {
-    "express":"^4.x"
+    "express": "^4.x"
   }
 }
