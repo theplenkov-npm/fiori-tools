@@ -1,0 +1,22 @@
+{
+  "name": "fiori-tools",
+  "version": "1.0.0",
+  "description": "Library of extensions for Fiori tools ( @sap/ux-ui5-tooling )",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThePlenkov/fiori-tools.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThePlenkov/fiori-tools/issues"
+  },
+  "homepage": "https://github.com/ThePlenkov/fiori-tools#readme",
+  "peerDependencies": {
+    "express":"^4.x"
+  }
+}

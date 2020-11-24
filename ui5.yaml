@@ -1,0 +1,20 @@
+specVersion: "1.0"
+metadata:
+  name: fiori-tools
+type: library
+---
+specVersion: "2.1"
+kind: extension
+type: server-middleware
+metadata:
+  name: fiori-tools-proxy-client
+middleware:
+  path: src/middlewares/fiori-tools-proxy-client.js
+---
+specVersion: "2.1"
+kind: extension
+type: server-middleware
+metadata:
+  name: fiori-tools-env
+middleware:
+  path: src/middlewares/fiori-tools-env.jsu
