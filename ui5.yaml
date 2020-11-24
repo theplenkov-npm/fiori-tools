@@ -1,8 +1,3 @@
-specVersion: "1.0"
-metadata:
-  name: fiori-tools
-type: library
----
 specVersion: "2.1"
 kind: extension
 type: server-middleware
