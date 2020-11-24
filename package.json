@@ -1,5 +1,5 @@
 {
-  "name": "@theplenkov/fiori-tools",
+  "name": "fiori-tools",
   "version": "1.0.8",
   "description": "Library of extensions for Fiori tools ( @sap/ux-ui5-tooling )",
   "main": "index.js",
