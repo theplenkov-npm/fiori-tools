@@ -12,4 +12,4 @@ type: server-middleware
 metadata:
   name: fiori-tools-env
 middleware:
-  path: src/middlewares/fiori-tools-env.jsu
+  path: src/middlewares/fiori-tools-env.js
