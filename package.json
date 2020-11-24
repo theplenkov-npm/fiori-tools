@@ -1,6 +1,6 @@
 {
   "name": "fiori-tools",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Library of extensions for Fiori tools ( @sap/ux-ui5-tooling )",
   "main": "index.js",
   "scripts": {
