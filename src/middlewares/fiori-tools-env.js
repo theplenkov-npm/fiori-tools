@@ -1,4 +1,4 @@
-module.exports = function ({ resources, middlewareUtil, options }) {
+module.exports = function ({ options }) {
   let { configuration } = options;
 
   let { no_proxy } = configuration;

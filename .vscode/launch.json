@@ -1,0 +1,18 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Test",
+      "cwd": "${workspaceFolder}/test",
+      "program": "${workspaceFolder}/test/node_modules/@ui5/cli/bin/ui5.js",
+      "args": ["serve"],
+      "runtimeArgs": ["--inspect"]
+      //"env": { "HTTP_PROXY": null, "HTTPS_PROXY": null }
+    }
+  ]
+}

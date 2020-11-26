@@ -1,6 +1,6 @@
 const express = require("express");
 
-module.exports = function ({ resources, middlewareUtil, options }) {
+module.exports = function ({  options }) {
   const app = express();
 
   let { configuration } = options;

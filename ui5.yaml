@@ -13,3 +13,19 @@ metadata:
   name: fiori-tools-env
 middleware:
   path: src/middlewares/fiori-tools-env.js
+---
+specVersion: "2.1"
+kind: extension
+type: server-middleware
+metadata:
+  name: fiori-tools-home-page
+middleware:
+  path: src/middlewares/fiori-tools-home-page.js
+---
+specVersion: "2.1"
+kind: extension
+type: server-middleware
+metadata:
+  name: fiori-tools-proxy-cdn
+middleware:
+  path: src/middlewares/fiori-tools-proxy-cdn.js
