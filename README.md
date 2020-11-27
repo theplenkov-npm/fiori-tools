@@ -6,14 +6,10 @@ UI5 cli makes it possible to develop and test apps on your local machine. Fiori 
 
 This package brings features on top of functions developed by SAP
 
-
-
 - List of middlewares
   * [fiori-tools-home-page: Redirect to a home page](#fiori-tools-home-page-redirect-to-a-home-page)
   * [fiori-tools-proxy-cdn: bootstrap SAPUI5 from CDN](#fiori-tools-proxy-cdn-bootstrap-sapui5-from-cdn)
   * [fiori-tools-neo-app: support neo-app.json for existing applications](#fiori-tools-neo-app-support-neo-appjson-for-existing-applications)
-
-
 
 ## How to install
 
@@ -200,3 +196,56 @@ start the server and check how it works
 ```bash
  curl localhost:8080/odata/northwind/Regions
 ```
+
+
+
+## appconfig/fioriSandboxConfig.json
+
+All modules of this project are actually built around page /test-resources/sap/ushell/shells/sandbox/fioriSandbox.html. This is just a simple Fiori launchpad page which uses /appconfig/fioriSandboxConfig.json as configuration file
+
+By default we have a page like this:
+
+![](C:\Users\pplenkov\AppData\Roaming\marktext\images\2020-11-27-21-37-40-image.png)
+
+But adding a file like this:
+
+```json
+{
+  "applications": {
+    "GL-lineItems": {
+      "title": "G/L items report"
+    }
+  },
+  "services": {
+    "LaunchPage": {
+      "adapter": {
+        "config": {
+          "groups": []
+        }
+      }
+    },
+    "NavTargetResolution": {
+      "adapter": {
+        "config": {
+          "applications": {
+            "GL-lineItems": {
+              "additionalInformation": "SAPUI5.Component=fin.gl.glview.display.FIN_GL_LITB_GLVExtension",
+              "url": "/"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+```
+
+we have a page like this:
+
+![](C:\Users\pplenkov\AppData\Roaming\marktext\images\2020-11-27-21-45-49-image.png)
+
+
+
+With this config we can also test cross-app navigations.

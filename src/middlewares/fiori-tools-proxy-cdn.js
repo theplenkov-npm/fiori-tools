@@ -11,7 +11,7 @@ module.exports = function ({ options }) {
   const { configuration } = options;
   const { home_page, fiori_tools_proxy } = configuration;
   const cdn = (({ url, version } = fiori_tools_proxy.ui5) =>
-    `${url}/${version}`)();
+    version ? `${url}/${version}` : url)();
 
   const home_page_full = `${cdn}${home_page}`;
 
