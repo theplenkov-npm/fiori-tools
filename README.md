@@ -6,6 +6,15 @@ UI5 cli makes it possible to develop and test apps on your local machine. Fiori 
 
 This package brings features on top of functions developed by SAP
 
+
+
+- List of middlewares
+  * [fiori-tools-home-page: Redirect to a home page](#fiori-tools-home-page-redirect-to-a-home-page)
+  * [fiori-tools-proxy-cdn: bootstrap SAPUI5 from CDN](#fiori-tools-proxy-cdn-bootstrap-sapui5-from-cdn)
+  * [fiori-tools-neo-app: support neo-app.json for existing applications](#fiori-tools-neo-app-support-neo-appjson-for-existing-applications)
+
+
+
 ## How to install
 
 Install the module
@@ -146,8 +155,6 @@ server:
       configuration:
         <<: *global
 ```
-
-
 
 ## fiori-tools-neo-app: support neo-app.json for existing applications
 
