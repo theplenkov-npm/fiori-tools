@@ -55,8 +55,7 @@ module.exports = function ({ options }) {
               path,
               createProxyMiddleware(oDestinations[name].target, {
                 changeOrigin: true,
-                pathRewrite: entryPath &&
-                  entryPath != path && { [`^${path}`]: entryPath },
+                pathRewrite: entryPath && { [`^${path}`]: entryPath },
                 agent,
               })
             );
