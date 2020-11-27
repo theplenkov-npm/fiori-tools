@@ -29,3 +29,11 @@ metadata:
   name: fiori-tools-proxy-cdn
 middleware:
   path: src/middlewares/fiori-tools-proxy-cdn.js
+---
+specVersion: "2.1"
+kind: extension
+type: server-middleware
+metadata:
+  name: fiori-tools-neo-app
+middleware:
+  path: src/middlewares/fiori-tools-neo-app.js

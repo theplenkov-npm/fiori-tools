@@ -29,5 +29,6 @@
   },
   "forwardPorts": [8080],
   //"initializeCommand": "npm run test:prepare",
-  "postCreateCommand": "npm run test:prepare"
+  "postCreateCommand": "npm run test:prepare",
+  "postStartCommand": "npm config set registry http://registry.npmjs.org/"
 }

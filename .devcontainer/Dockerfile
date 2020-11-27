@@ -4,8 +4,6 @@
 ARG VARIANT="14-buster"
 FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
 
-RUN npm config set registry http://registry.npmjs.org/
-
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get -y install --no-install-recommends libsecret-1-dev
 

@@ -26,3 +26,5 @@ server:
       beforeMiddleware: serveIndex
       configuration:
         <<: *global
+    - name: fiori-tools-neo-app
+      afterMiddleware: fiori-tools-proxy
