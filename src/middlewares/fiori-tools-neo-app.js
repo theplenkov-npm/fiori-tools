@@ -51,12 +51,15 @@ module.exports = function ({ options }) {
         case "destination":
           try {
             console.log(`Path detected: ${path} ${path_description}`);
+            let oDestination = oDestinations[name];
+
             app.use(
               path,
-              createProxyMiddleware(oDestinations[name].target, {
+              createProxyMiddleware(oDestination.target, {
                 changeOrigin: true,
                 pathRewrite: entryPath && { [`^${path}`]: entryPath },
-                agent,
+                // may be later to implement real should proxy rule
+                agent: oDestination.useProxy && agent,
               })
             );
           } catch (error) {
