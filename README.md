@@ -6,8 +6,6 @@ UI5 cli makes it possible to develop and test apps on your local machine. Fiori 
 
 This package brings features on top of functions developed by SAP
 
-
-
 ## How to install
 
 Install the module
@@ -65,8 +63,6 @@ server:
         version: 1.78.0
 ```
 
-
-
 ## fiori-tools-proxy-cdn: bootstrap SAPUI5 from CDN
 
 **What**: this concept is described in [SAPUI5 SDK - Demo Kit](https://ui5.sap.com/#/topic/2d3eb2f322ea4a82983c1c62a33ec4ae). The idea is simple - we use an absolute URL in bootstrap script instead of the relative one.  This extension transforms the original page like this
@@ -121,7 +117,6 @@ server:
             url: https://sapui5.hana.ondemand.com
             version: 1.78.0
         home_page: "/test-resources/sap/ushell/shells/sandbox/fioriSandbox.html"
-
 ```
 
 you may notice that it uses the same configuration as the original middleware fiori-tools-proxy. Therefore if we want to use all of them we can use yaml merge feature to make file more compact:
@@ -150,4 +145,51 @@ server:
       beforeMiddleware: serveIndex
       configuration:
         <<: *global
+```
+
+
+
+## fiori-tools-neo-app: support neo-app.json for existing applications
+
+**What**: this middleware support neo-app.json file for ui5 apps launched with ui5 serve/fiori run. New middleware fiori-tools-proxy has a backend configuration however for some projects there might be too much rules. Also it requires separate backend host definition for each of rules while neo-app.json supports destinations.
+
+**How to use**:
+
+declare middleware in ui5.yaml
+
+```yaml
+server:
+  customMiddleware:
+    - name: fiori-tools-neo-app
+      afterMiddleware: fiori-tools-proxy        
+```
+
+provide neo-app.json in the project root folder
+
+```json
+{
+  "routes": [
+    {
+      "path": "/odata/northwind",
+      "target": {
+        "type": "destination",
+        "name": "northwind",
+        "entryPath": "/V2/Northwind/Northwind.svc"
+      },
+      "description": "Odata:dev"
+    }
+  ]
+}
+```
+
+provide neo-dest.json file with configuration like this
+
+```json
+{ "northwind": { "target": "https://services.odata.org" } }
+```
+
+start the server and check how it works
+
+```bash
+ curl localhost:8080/odata/northwind/Regions
 ```
