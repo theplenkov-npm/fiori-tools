@@ -27,15 +27,6 @@ module.exports = function ({ options }) {
       }
     }
 
-    function compress(data, encoding) {
-      switch (encoding) {
-        case "gzip":
-          return zlib.gzipSync(data);
-        default:
-          return data;
-      }
-    }
-
     Object.assign(res, {
       send(data) {
         switch (this.statusCode) {
@@ -59,7 +50,10 @@ module.exports = function ({ options }) {
                 attr.href = new URL(attr.href, home_page_full).toString();
               });
 
-            send.call(this, compress($.html(), encoding));
+            res.removeHeader("content-encoding");
+            send.call(this, $.html());
+
+            //send.call(this, compress($.html(), encoding));
             break;
           }
           // eslint-disable-next-line no-fallthrough
