@@ -7,9 +7,9 @@ UI5 cli makes it possible to develop and test apps on your local machine. Fiori 
 This package brings features on top of functions developed by SAP
 
 - List of middlewares
-  * [fiori-tools-home-page: Redirect to a home page](#fiori-tools-home-page-redirect-to-a-home-page)
-  * [fiori-tools-proxy-cdn: bootstrap SAPUI5 from CDN](#fiori-tools-proxy-cdn-bootstrap-sapui5-from-cdn)
-  * [fiori-tools-neo-app: support neo-app.json for existing applications](#fiori-tools-neo-app-support-neo-appjson-for-existing-applications)
+  - [fiori-tools-home-page: Redirect to a home page](#fiori-tools-home-page-redirect-to-a-home-page)
+  - [fiori-tools-proxy-cdn: bootstrap SAPUI5 from CDN](#fiori-tools-proxy-cdn-bootstrap-sapui5-from-cdn)
+  - [fiori-tools-neo-app: support neo-app.json for existing applications](#fiori-tools-neo-app-support-neo-appjson-for-existing-applications)
 
 ## How to install
 
@@ -37,7 +37,7 @@ This module can be used indepentently from @sap/ux-ui5-tooling also but it's not
 
 ![](docs/img/redirect_to_home_page.gif)
 
-**Why**: in the template provided by Fiori Tools application generator we can see test/flpSandbox.html and test/flpSandboxMockServer.html files. Besides of that  we have also sandbox launchpad available as a part of UI5  library and we can take it directly from the test resources. [Fiori Launchpad - Sandbox for application development](https://ui5.sap.com/test-resources/sap/ushell/shells/sandbox/fioriSandbox.html#Shell-home)
+**Why**: in the template provided by Fiori Tools application generator we can see test/flpSandbox.html and test/flpSandboxMockServer.html files. Besides of that we have also sandbox launchpad available as a part of UI5 library and we can take it directly from the test resources. [Fiori Launchpad - Sandbox for application development](https://ui5.sap.com/test-resources/sap/ushell/shells/sandbox/fioriSandbox.html#Shell-home)
 
 In addition, sandbox launchpad delivers really nice feature to maintain application config as a separate json file which creates even a space to generate it via API.
 
@@ -59,7 +59,7 @@ server:
   customMiddleware:
     - name: fiori-tools-proxy
       beforeMiddleware: compression
-      configuration:    
+      configuration:
         ui5:
           path:
             - /resources
@@ -70,44 +70,49 @@ server:
 
 ## fiori-tools-proxy-cdn: bootstrap SAPUI5 from CDN
 
-**What**: this concept is described in [SAPUI5 SDK - Demo Kit](https://ui5.sap.com/#/topic/2d3eb2f322ea4a82983c1c62a33ec4ae). The idea is simple - we use an absolute URL in bootstrap script instead of the relative one.  This extension transforms the original page like this
+**What**: this concept is described in [SAPUI5 SDK - Demo Kit](https://ui5.sap.com/#/topic/2d3eb2f322ea4a82983c1c62a33ec4ae). The idea is simple - we use an absolute URL in bootstrap script instead of the relative one. This extension transforms the original page like this
 
 ```html
 <script id="sap-ushell-bootstrap" src="../../bootstrap/sandbox.js"></script>
 
-        <script id="sap-ui-bootstrap"
-            src="../../../../../resources/sap-ui-core.js"
-            data-sap-ui-evt-oninit="main();"
-            data-sap-ui-libs="sap.m"
-            data-sap-ui-async="true"
-            data-sap-ui-theme="sap_fiori_3"
-            data-sap-ui-compatVersion="1.16"
-            data-sap-ui-xx-bindingSyntax="complex">
-        </script>
+<script
+  id="sap-ui-bootstrap"
+  src="../../../../../resources/sap-ui-core.js"
+  data-sap-ui-evt-oninit="main();"
+  data-sap-ui-libs="sap.m"
+  data-sap-ui-async="true"
+  data-sap-ui-theme="sap_fiori_3"
+  data-sap-ui-compatVersion="1.16"
+  data-sap-ui-xx-bindingSyntax="complex"
+></script>
 
-        <script src="../../bootstrap/standalone.js"></script>
+<script src="../../bootstrap/standalone.js"></script>
 ```
 
 into properly resolved page like that
 
 ```html
- <script id="sap-ushell-bootstrap" src="https://sapui5.hana.ondemand.com/1.78.0/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
+<script
+  id="sap-ushell-bootstrap"
+  src="https://sapui5.hana.ondemand.com/1.78.0/test-resources/sap/ushell/bootstrap/sandbox.js"
+></script>
 
-        <script id="sap-ui-bootstrap"
+<script
+  id="sap-ui-bootstrap"
   src="https://sapui5.hana.ondemand.com/1.78.0/resources/sap-ui-core.js"
   data-sap-ui-evt-oninit="main();"
   data-sap-ui-libs="sap.m"
   data-sap-ui-theme="sap_fiori_3"
   data-sap-ui-compatversion="1.16"
-  data-sap-ui-xx-bindingsyntax="complex">
-        </script>
+  data-sap-ui-xx-bindingsyntax="complex"
+></script>
 
-        <script src="https://sapui5.hana.ondemand.com/1.78.0/test-resources/sap/ushell/bootstrap/standalone.js"></script>
+<script src="https://sapui5.hana.ondemand.com/1.78.0/test-resources/sap/ushell/bootstrap/standalone.js"></script>
 ```
 
-**Why**: basically the main reason for that is performance. In case if you are not UI5 library developer then you probably don't need even to send these requests for /resources and /test-resources to your local machine and then to resend them to the internet. In debug mode Fiori application can easily send around 1K files reading sources 1 by 1 so why you should load your PC if your browser can do this directly. Another reason is caching - by using  an absolute path it doesn't matter on which local port your service is running - those files will be always cached within a specific UI5 version.
+**Why**: basically the main reason for that is performance. In case if you are not UI5 library developer then you probably don't need even to send these requests for /resources and /test-resources to your local machine and then to resend them to the internet. In debug mode Fiori application can easily send around 1K files reading sources 1 by 1 so why you should load your PC if your browser can do this directly. Another reason is caching - by using an absolute path it doesn't matter on which local port your service is running - those files will be always cached within a specific UI5 version.
 
-**How to use:** 
+**How to use:**
 
 You can notice again that this middleware is supposed to work together with fiori-tools-proxy. In fact it's created to make life of a main proxy middleware much simpler and to send less traffic on it
 
@@ -117,7 +122,7 @@ server:
     - name: fiori-tools-proxy-cdn
       beforeMiddleware: fiori-tools-proxy
       configuration:
-        fiori_tools_proxy: 
+        fiori_tools_proxy:
           ui5:
             url: https://sapui5.hana.ondemand.com
             version: 1.78.0
@@ -164,7 +169,7 @@ declare middleware in ui5.yaml
 server:
   customMiddleware:
     - name: fiori-tools-neo-app
-      afterMiddleware: fiori-tools-proxy        
+      afterMiddleware: fiori-tools-proxy
 ```
 
 provide neo-app.json in the project root folder
@@ -197,15 +202,13 @@ start the server and check how it works
  curl localhost:8080/odata/northwind/Regions
 ```
 
-
-
 ## appconfig/fioriSandboxConfig.json
 
 All modules of this project are actually built around page /test-resources/sap/ushell/shells/sandbox/fioriSandbox.html. This is just a simple Fiori launchpad page which uses /appconfig/fioriSandboxConfig.json as configuration file
 
 By default we have a page like this:
 
-![](C:\Users\pplenkov\AppData\Roaming\marktext\images\2020-11-27-21-37-40-image.png)
+![](docs/img/default_launchpad.png)
 
 But adding a file like this:
 
@@ -238,14 +241,10 @@ But adding a file like this:
     }
   }
 }
-
-
 ```
 
 we have a page like this:
 
-![](C:\Users\pplenkov\AppData\Roaming\marktext\images\2020-11-27-21-45-49-image.png)
-
-
+![](docs/img/custom_launchpad.png)
 
 With this config we can also test cross-app navigations.

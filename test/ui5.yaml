@@ -10,7 +10,7 @@ customConfiguration: &global
         - /resources
         - /test-resources
       url: https://sapui5.hana.ondemand.com
-      version: 1.78.0
+      # version: 1.78.0
   home_page: "/test-resources/sap/ushell/shells/sandbox/fioriSandbox.html"
 server:
   customMiddleware:
