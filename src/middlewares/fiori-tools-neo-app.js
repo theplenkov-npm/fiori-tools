@@ -55,12 +55,18 @@ module.exports = function ({ options }) {
 
             app.use(
               path,
-              createProxyMiddleware(oDestination.target, {
-                changeOrigin: true,
-                pathRewrite: entryPath && { [`^${path}`]: entryPath },
-                // may be later to implement real should proxy rule
-                agent: oDestination.useProxy && agent,
-              })
+              createProxyMiddleware(
+                oDestination.target,
+                Object.assign(
+                  {
+                    changeOrigin: true,
+                    pathRewrite: entryPath && { [`^${path}`]: entryPath },
+                    // may be later to implement real should proxy rule
+                    agent: oDestination.useProxy && agent,
+                  },
+                  oDestination
+                )
+              )
             );
           } catch (error) {
             console.warn(
