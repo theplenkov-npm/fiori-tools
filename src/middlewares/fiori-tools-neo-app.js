@@ -33,48 +33,59 @@ try {
 
 module.exports = function ({ options }) {
   try {
-    let oNeoApp = readConfig(options?.configuration?.neo?.app, "neo-app.json");
+    let oNeoApp = readConfig(
+      options &&
+        options.configuration &&
+        options.configuration.neo &&
+        options.configuration.neo.app,
+      "neo-app.json"
+    );
 
     let oDestinations = readConfig(
-      options?.configuration?.neo?.destinations,
+      options &&
+        options.configuration &&
+        options.configuration.neo &&
+        options.configuration.neo.destinations,
       "neo-dest.json"
     );
     const app = express();
 
-    [oNeoApp?.routes].flat().forEach(({ path, target, description }) => {
-      let path_description = description && `(${description})`;
+    [oNeoApp && oNeoApp.routes]
+      .flat()
+      .forEach(({ path, target, description }) => {
+        let path_description = description && `(${description})`;
 
-      let { type, name, entryPath } = target;
+        let { type, name, entryPath } = target;
 
-      switch (type) {
-        case "sapui5":
-        case "destination":
-          try {
-            console.log(`Path detected: ${path} ${path_description}`);
-            let oDestination = oDestinations[name];
+        switch (type) {
+          case "sapui5":
+          case "destination":
+            try {
+              console.log(`Path detected: ${path} ${path_description}`);
+              let oDestination = oDestinations[name];
 
-            app.use(
-              path,
-              createProxyMiddleware(
-                oDestination.target,
-                Object.assign(
-                  {
-                    changeOrigin: true,
-                    pathRewrite: entryPath && { [`^${path}`]: entryPath },
-                    // may be later to implement real should proxy rule
-                    agent: oDestination.useProxy && agent,
-                  },
-                  oDestination
+              app.use(
+                path,
+                createProxyMiddleware(
+                  oDestination.target,
+                  Object.assign(
+                    {
+                      changeOrigin: true,
+                      pathRewrite: entryPath && { [`^${path}`]: entryPath },
+                      // may be later to implement real should proxy rule
+                      agent: oDestination.useProxy && agent,
+                    },
+                    oDestination
+                  )
                 )
-              )
-            );
-          } catch (error) {
-            console.warn(
-              `Destination ${name} is not found in configuration. Path "${path}" is not configured`
-            );
-          }
-      }
-    });
+              );
+            } catch (error) {
+              console.warn(
+                `Destination ${name} is not found in configuration. Path "${path}" is not configured`
+              );
+            }
+        }
+      });
 
     return app;
   } catch (error) {

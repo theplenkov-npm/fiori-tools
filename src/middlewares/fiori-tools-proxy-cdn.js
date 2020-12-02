@@ -36,7 +36,9 @@ module.exports = function ({ options }) {
 
             //resolve scripts
             Array.from($("script"))
-              .filter((script) => script?.attribs?.src)
+              .filter(
+                (script) => script && script.attribs && script.attribs.src
+              )
               .forEach((script) => {
                 let attr = $(script).attr();
                 attr.src = new URL(attr.src, home_page_full).toString();
@@ -44,7 +46,7 @@ module.exports = function ({ options }) {
 
             //resolve links
             Array.from($("link"))
-              .filter((node) => node?.attribs?.href)
+              .filter((node) => node && node.attribs && node.attribs.href)
               .forEach((node) => {
                 let attr = $(node).attr();
                 attr.href = new URL(attr.href, home_page_full).toString();
