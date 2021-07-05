@@ -3,20 +3,20 @@ const express = require("express");
 const cheerio = require("cheerio");
 const zlib = require("zlib");
 
-module.exports = function ({ options }) {
+module.exports = function ({options}) {
   // create new router
   const app = express();
 
   // build cdn from config
-  const { configuration } = options;
-  const { home_page, fiori_tools_proxy } = configuration;
-  const cdn = (({ url, version } = fiori_tools_proxy.ui5) =>
+  const {configuration} = options;
+  const {home_page, fiori_tools_proxy} = configuration;
+  const cdn = (({url, version} = fiori_tools_proxy.ui5) =>
     version ? `${url}/${version}` : url)();
 
   const home_page_full = `${cdn}${home_page}`;
 
   app.get(home_page, (req, res, next) => {
-    let { send } = res;
+    let {send, write} = res;
 
     function decompress(data, encoding) {
       switch (encoding) {
@@ -28,34 +28,15 @@ module.exports = function ({ options }) {
     }
 
     Object.assign(res, {
+      write(chunk) {
+        write.call(this, Buffer.from(bootstrapCDN(chunk.toString())));
+      },
       send(data) {
         switch (this.statusCode) {
           case 200: {
             const encoding = res.getHeader("content-encoding");
-            let $ = cheerio.load(decompress(data, encoding));
-
-            //resolve scripts
-            Array.from($("script"))
-              .filter(
-                (script) => script && script.attribs && script.attribs.src
-              )
-              .forEach((script) => {
-                let attr = $(script).attr();
-                attr.src = new URL(attr.src, home_page_full).toString();
-              });
-
-            //resolve links
-            Array.from($("link"))
-              .filter((node) => node && node.attribs && node.attribs.href)
-              .forEach((node) => {
-                let attr = $(node).attr();
-                attr.href = new URL(attr.href, home_page_full).toString();
-              });
-
             res.removeHeader("content-encoding");
-            send.call(this, $.html());
-
-            //send.call(this, compress($.html(), encoding));
+            send.call(this, bootstrapCDN(decompress(data, encoding)));
             break;
           }
           // eslint-disable-next-line no-fallthrough
@@ -69,4 +50,25 @@ module.exports = function ({ options }) {
   });
 
   return app;
+
+  function bootstrapCDN(html) {
+    let $ = cheerio.load(html);
+
+    //resolve scripts
+    Array.from($("script"))
+      .filter((script) => script && script.attribs && script.attribs.src)
+      .forEach((script) => {
+        let attr = $(script).attr();
+        attr.src = new URL(attr.src, home_page_full).toString();
+      });
+
+    //resolve links
+    Array.from($("link"))
+      .filter((node) => node && node.attribs && node.attribs.href)
+      .forEach((node) => {
+        let attr = $(node).attr();
+        attr.href = new URL(attr.href, home_page_full).toString();
+      });
+    return $.html();
+  }
 };
