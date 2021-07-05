@@ -1,5 +1,4 @@
-# fiori-tools
-
+# fiori-tools ![npm](https://img.shields.io/npm/v/fiori-tools)
 Library of extensions for [SAP Fiori Tools](https://www.npmjs.com/package/@sap/ux-ui5-tooling) ( @sap/ux-ui5-tooling )
 
 UI5 cli makes it possible to develop and test apps on your local machine. Fiori tools is a set of server middleware which delivers even greater experience.
