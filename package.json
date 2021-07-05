@@ -19,9 +19,6 @@
     "url": "https://github.com/ThePlenkov/fiori-tools/issues"
   },
   "homepage": "https://github.com/ThePlenkov/fiori-tools#readme",
-  "peerDependencies": {
-    "express": "^4.x"
-  },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "http-proxy-middleware": "^1.0.6",
