@@ -1,4 +1,5 @@
 const express = require("express");
+const nocache = require("nocache");
 // nodejs jQuery
 const cheerio = require("cheerio");
 const zlib = require("zlib");
@@ -15,8 +16,12 @@ module.exports = function ({options}) {
 
   const home_page_full = `${cdn}${home_page}`;
 
+  // console.log("CDN bootstrap plugin is loaded");
+
   app.get(home_page, (req, res, next) => {
     let {send, write} = res;
+
+    // console.log("CDN bootstrap plugin is triggered");
 
     function decompress(data, encoding) {
       switch (encoding) {
@@ -30,10 +35,13 @@ module.exports = function ({options}) {
     Object.assign(res, {
       write(chunk) {
         let html = bootstrapCDN(chunk.toString());
-        this.header().set("content-length", html.length);
-        write.call(this, Buffer.from(html));
+        this.header().set("content-length", html.length);        
+        nocache()(req,res,()=>{});
+        console.log(`CDN ${cdn} is injected into ${home_page}`);
+        write.call(this, Buffer.from(html));        
       },
       send(data) {
+        console.log(`Send home page`);
         switch (this.statusCode) {
           case 200: {
             const encoding = res.getHeader("content-encoding");
