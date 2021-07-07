@@ -29,7 +29,9 @@ module.exports = function ({options}) {
 
     Object.assign(res, {
       write(chunk) {
-        write.call(this, Buffer.from(bootstrapCDN(chunk.toString())));
+        let html = bootstrapCDN(chunk.toString());
+        this.header().set("content-length", html.length);
+        write.call(this, Buffer.from(html));
       },
       send(data) {
         switch (this.statusCode) {
