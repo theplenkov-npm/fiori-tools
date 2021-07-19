@@ -34,11 +34,15 @@ module.exports = function ({options}) {
 
     Object.assign(res, {
       write(chunk) {
-        let html = bootstrapCDN(chunk.toString());
-        this.header().set("content-length", html.length);        
-        nocache()(req,res,()=>{});
-        console.log(`CDN ${cdn} is injected into ${home_page}`);
-        write.call(this, Buffer.from(html));        
+        try {
+          let html = bootstrapCDN(chunk.toString());
+          this.header().set("content-length", html.length);
+          nocache()(req, res, () => {});
+          console.log(`CDN ${cdn} is injected into ${home_page}`);
+          return write.call(this, Buffer.from(html));
+        } catch (error) {
+          return write.apply(this, arguments);
+        }
       },
       send(data) {
         console.log(`Send home page`);

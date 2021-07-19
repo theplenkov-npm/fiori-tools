@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@sap/ux-ui5-tooling": "^1.0.24",
+    "@sap/ux-ui5-tooling": "^1.2.4",
     "@ui5/cli": "^2.6.4",
     "fiori-tools": "file:.."
   },
