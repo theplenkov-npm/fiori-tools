@@ -4,6 +4,7 @@
   "description": "Library of extensions for Fiori tools ( @sap/ux-ui5-tooling )",
   "main": "index.js",
   "scripts": {
+    "publish:patch": "npm version patch",
     "test:prepare": "npm link && cd test && npm link fiori-tools",
     "test": "echo \"Info: no test specified\"",
     "preversion": "npm test",
