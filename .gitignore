@@ -3,5 +3,5 @@ dist/
 yarn-error.log
 package-lock.json
 yarn.lock
-package-lock.json
+# package-lock.json
 test/package-lock.json
