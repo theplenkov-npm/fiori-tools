@@ -3,28 +3,24 @@ specVersion: "2.2"
 type: library
 metadata:
   name: test
-customConfiguration: &global
-  fiori_tools_proxy: &fiori-tools-proxy
-    ui5:
-      path:
-        - /resources
-        - /test-resources
-      url: https://sapui5.hana.ondemand.com
-      # version: 1.78.0
-  home_page: "/test-resources/sap/ushell/shells/sandbox/fioriSandbox.html"
 server:
   customMiddleware:
     - name: fiori-tools-proxy
       beforeMiddleware: compression
-      configuration:
-        <<: *fiori-tools-proxy
+      configuration: &fiori-tools-proxy
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://sapui5.hana.ondemand.com
+          version: 1.78.0
     - name: fiori-tools-proxy-cdn
       beforeMiddleware: fiori-tools-proxy
       configuration:
-        <<: *global
+        <<: *fiori-tools-proxy
     - name: fiori-tools-home-page
       beforeMiddleware: serveIndex
       configuration:
-        <<: *global
+        home_page: "/test-resources/sap/ushell/shells/sandbox/fioriSandbox.html"
     - name: fiori-tools-neo-app
       afterMiddleware: fiori-tools-proxy

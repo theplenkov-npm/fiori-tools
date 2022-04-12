@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ui5 serve"
+    "start": "fiori run"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@sap/ux-ui5-tooling": "^1.2.4",
-    "@ui5/cli": "^2.6.4",
+    "@sap/ux-ui5-tooling": "^1",
+    "@ui5/cli": "^2",
     "fiori-tools": "file:.."
   },
   "ui5": {
