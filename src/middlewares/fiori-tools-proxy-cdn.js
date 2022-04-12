@@ -12,7 +12,7 @@ module.exports = function ({ options }) {
   // build cdn from config
   const { configuration } = options;
 
-  const { ui5, path } = configuration;
+  const { ui5, path, theme } = configuration;
 
   assert(ui5, "ui5 configuration is not provided for fiori-tools-proxy-cdn middleware");
 
@@ -96,6 +96,14 @@ module.exports = function ({ options }) {
           let attr = $(node).attr();
           attr.href = new URL(attr.href, home_page_full).toString();
         });
+
+
+      // bootstrap theme
+      theme && Array.from($("#sap-ui-bootstrap")).forEach((node) => {
+        let attr = $(node).attr();
+        attr["data-sap-ui-theme"] = theme;
+      });
+
       return $.html();
     }
 
