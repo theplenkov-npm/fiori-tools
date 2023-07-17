@@ -1,22 +1,15 @@
 {
-  "name": "test",
+  "name": "fiori-tools-test",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "fiori run"
+    "start": "ui5-ts serve --verbose"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@sap/ux-ui5-tooling": "^1",
-    "@ui5/cli": "^2",
-    "fiori-tools": "file:.."
-  },
-  "ui5": {
-    "dependencies": [
-      "@sap/ux-ui5-tooling",
-      "fiori-tools"
-    ]
+    "@sap/ux-ui5-tooling": "*",
+    "@fiori/home-page": "*"
   }
 }

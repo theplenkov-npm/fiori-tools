@@ -1,0 +1,6 @@
+{
+  "name": "ui5-ts",
+  "version": "0.0.1",
+  "bin": "src/index.js",
+  "type": "module"
+}

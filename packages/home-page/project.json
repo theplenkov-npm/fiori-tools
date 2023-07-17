@@ -1,0 +1,30 @@
+{
+  "name": "home-page",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/home-page/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/home-page",
+        "main": "packages/home-page/src/index.ts",
+        "tsConfig": "packages/home-page/tsconfig.lib.json",
+        "assets": ["packages/home-page/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs home-page {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/home-page/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

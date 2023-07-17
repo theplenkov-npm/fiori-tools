@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "Node",
+    "target": "ESNext",
+    "esModuleInterop": false
+  },
+  "files": [],
+  "include": [],
+  "ts-node": {
+    "esm": false,
+    "require": [
+      "tsconfig-paths/register"
+    ]
+  }
+}

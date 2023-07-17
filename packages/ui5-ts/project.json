@@ -1,0 +1,11 @@
+{
+  "name": "ui5-ts",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/fiori-ts/src",
+  "targets": {
+    "publish": {
+      "command": "node tools/scripts/publish.mjs fiori-ts {args.ver} {args.tag}"
+    }
+  },
+  "tags": []
+}
