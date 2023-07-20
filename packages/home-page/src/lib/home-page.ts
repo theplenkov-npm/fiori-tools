@@ -1,5 +1,5 @@
 import { assert } from 'console';
-import { UI5_Middleware } from '../types/middleware.js';
+import { UI5_Middleware } from '@fiori/types';
 
 export interface RedirectToHomePageInput {
   home_page: string;

@@ -1,4 +1,4 @@
-import { UI5_Middleware } from '../types/middleware.js';
+import { UI5_Middleware } from '@fiori/types';
 import { redirectToHomePage, RedirectToHomePageInput } from './home-page.js';
 import { deepmerge as merge } from 'deepmerge-ts';
 

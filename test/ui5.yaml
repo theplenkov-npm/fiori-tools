@@ -1,27 +1,27 @@
-specVersion: '2.2'
+specVersion: '3.0'
 #type: application|library|theme-library|module
 type: library
 metadata:
   name: test
 server:
   customMiddleware:
-    - name: fiori-tools-proxy
+    - name: ui5-proxy-middleware
       beforeMiddleware: compression
-      configuration:
+      configuration: &ui5-config
         ui5:
           path:
             - /resources
             - /test-resources
           url: https://sapui5.hana.ondemand.com
-          version: 1.71.40
-    # - name: fiori-tools-proxy-cdn
-    #   beforeMiddleware: fiori-tools-proxy
-    #   configuration:
-    #     <<: *fiori-tools-proxy
-    #     theme: sap_fiori_3_dark
+    - name: fiori-tools-proxy-cdn
+      beforeMiddleware: ui5-proxy-middleware
+      configuration:
+        paths:
+          - /**/fioriSandbox.html
+        <<: *ui5-config
     - name: fiori-tools-sandbox
       beforeMiddleware: serveIndex
-      # configuration:
+
       #   query:
       #     sap-ui-debug: true
     # - name: fiori-tools-neo-app

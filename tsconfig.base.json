@@ -18,14 +18,24 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@fiori/direct-load": [
+        "packages/direct-load/src/index.ts"
+      ],
       "@fiori/home-page": [
         "packages/home-page/src/index.ts"
       ],
-      "fiori-ts": [
-        "packages/fiori-ts/src/index.ts"
+      "@fiori/types": [
+        "packages/types/src/index.ts"
       ]
-    }
+    },
+    // "typeRoots": [
+    //   "node_modules/@types",
+    //   "git_modules/open-ux-tools/types"
+    // ]
   },
+  "files": [
+    "git_modules/open-ux-tools/types/ui5.d.ts"
+  ],
   "exclude": [
     "node_modules",
     "tmp"

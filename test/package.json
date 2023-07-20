@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "@sap/ux-ui5-tooling": "*",
-    "@fiori/home-page": "*"
+    "@fiori/home-page": "*",
+    "@fiori/direct-load": "*",
+    "@sap-ux/ui5-proxy-middleware": "*"
   }
 }

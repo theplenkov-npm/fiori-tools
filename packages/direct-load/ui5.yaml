@@ -1,0 +1,7 @@
+specVersion: '3.0'
+kind: extension
+type: server-middleware
+metadata:
+  name: fiori-tools-proxy-cdn
+middleware:
+  path: src/lib/direct-load.js
