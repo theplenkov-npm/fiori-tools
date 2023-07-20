@@ -7,11 +7,5 @@
     "esModuleInterop": false
   },
   "files": [],
-  "include": [],
-  "ts-node": {
-    "esm": false,
-    "require": [
-      "tsconfig-paths/register"
-    ]
-  }
+  "include": []
 }

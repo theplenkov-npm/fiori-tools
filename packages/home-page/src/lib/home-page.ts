@@ -1,4 +1,3 @@
-import { assert } from 'console';
 import { UI5_Middleware } from '@fiori/types';
 
 export interface RedirectToHomePageInput {
