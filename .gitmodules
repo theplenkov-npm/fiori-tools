@@ -1,0 +1,3 @@
+[submodule "git_modules/open-ux-tools"]
+	path = git_modules/open-ux-tools
+	url = https://github.com/SAP/open-ux-tools.git
