@@ -13,7 +13,7 @@ export const injectUI5cdn: UI5_Middleware<Input> = function (input) {
     (mountPath) => {
       const regexPattern = `^${mountPath.replace('**', '.*')}$`;
       return new RegExp(regexPattern);
-    }
+    },
   );
 
   return (req, res, next) => {
@@ -28,7 +28,6 @@ export const injectUI5cdn: UI5_Middleware<Input> = function (input) {
     // If there's a match, handle the request accordingly
     if (isMatch) {
       // Create a variable to store the modified content
-      let html = '';
       const { write, end } = res;
       const chunks: Buffer[] = [];
       const cdnUrl = new URL(req.url, input.options.configuration?.ui5?.url);
@@ -46,14 +45,14 @@ export const injectUI5cdn: UI5_Middleware<Input> = function (input) {
         const html = Buffer.concat(chunks).toString();
         const modifiedContent = bootstrapCDN(html);
         res.setHeader('Content-Length', Buffer.byteLength(modifiedContent));
-        write.call(res, modifiedContent, encoding as any);
-        end.call(res, undefined, encoding as any);
+        write.call(res, modifiedContent, encoding as never);
+        end.call(res, undefined, encoding as never);
       } as Response['end'];
 
-      function bootstrapCDN(html: string) {
-        let $ = cheerio.load(html);
+      const bootstrapCDN = (html: string) => {
+        const $ = cheerio.load(html);
 
-        $('#sap-ushell-bootstrap, #sap-ui-bootstrap').each((i, el) => {
+        $('#sap-ushell-bootstrap, #sap-ui-bootstrap').each((_i, el) => {
           const src = el.attribs['src'];
           if (src) {
             const newUrl = new URL(src, cdnUrl);
@@ -62,7 +61,7 @@ export const injectUI5cdn: UI5_Middleware<Input> = function (input) {
         });
 
         return $.html();
-      }
+      };
     }
     next();
   };
