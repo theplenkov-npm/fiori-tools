@@ -1,1 +1,3 @@
-export * from './lib/middleware';
+export * from './lib/middleware.js';
+
+export type Test = {};

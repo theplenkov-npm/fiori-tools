@@ -4,7 +4,7 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "start": "ui5-ts serve --verbose"
+    "start": "ui5-ts serve"
   },
   "author": "",
   "license": "ISC",

@@ -1,1 +1,1 @@
-export * from './lib/direct-load';
+export * from './lib/direct-load.js';

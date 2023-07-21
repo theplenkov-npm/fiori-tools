@@ -27,15 +27,8 @@
       "@fiori/types": [
         "packages/types/src/index.ts"
       ]
-    },
-    // "typeRoots": [
-    //   "node_modules/@types",
-    //   "git_modules/open-ux-tools/types"
-    // ]
+    }
   },
-  "files": [
-    "git_modules/open-ux-tools/types/ui5.d.ts"
-  ],
   "exclude": [
     "node_modules",
     "tmp"
