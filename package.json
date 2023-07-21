@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run start -w test",
-    "bin": "rm -rf node_modules/.bin && npm i"
+    "bin": "rm -rf node_modules/.bin && npm i",
+    "nx:build": "nx run-many -t build"
   },
   "repository": {
     "type": "git",

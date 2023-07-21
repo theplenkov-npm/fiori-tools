@@ -14,7 +14,8 @@
         "main": "packages/home-page/src/index.ts",
         "tsConfig": "packages/home-page/tsconfig.lib.json",
         "assets": [
-          "packages/home-page/*.md"
+          "packages/home-page/*.md",
+          "packages/home-page/ui5.yaml"
         ]
       },
       "dependsOn": [

@@ -1,0 +1,16 @@
+{
+  "name": "@fiori/test-dist",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "start": "ui5 serve --verbose"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fiori/home-page": "file:../dist/packages/home-page",
+    "@fiori/direct-load": "file:../dist/packages/direct-load",
+    "@sap-ux/ui5-proxy-middleware": "*"
+  }
+}

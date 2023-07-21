@@ -14,7 +14,8 @@
         "main": "packages/direct-load/src/index.ts",
         "tsConfig": "packages/direct-load/tsconfig.lib.json",
         "assets": [
-          "packages/direct-load/*.md"
+          "packages/direct-load/*.md",
+          "packages/direct-load/ui5.yaml"
         ]
       },
       "dependsOn": [

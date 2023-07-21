@@ -1,5 +1,5 @@
 {
-  "name": "fiori-tools-test",
+  "name": "@fiori/test-local",
   "version": "1.0.0",
   "description": "",
   "type": "module",
@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@sap/ux-ui5-tooling": "*",
     "@fiori/home-page": "*",
     "@fiori/direct-load": "*",
     "@sap-ux/ui5-proxy-middleware": "*"
