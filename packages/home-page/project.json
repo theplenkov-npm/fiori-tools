@@ -25,6 +25,12 @@
       "options": {
         "lintFilePatterns": ["packages/home-page/**/*.ts"]
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventional"
+      }
     }
   },
   "tags": []

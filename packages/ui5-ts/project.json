@@ -5,6 +5,12 @@
   "targets": {
     "publish": {
       "command": "node tools/scripts/publish.mjs ui5-ts {args.ver} {args.tag}"
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventional"
+      }
     }
   },
   "tags": []
