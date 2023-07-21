@@ -1,0 +1,44 @@
+{
+  "name": "direct-load",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/direct-load/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/packages/direct-load",
+        "main": "packages/direct-load/src/index.ts",
+        "tsConfig": "packages/direct-load/tsconfig.lib.json",
+        "assets": [
+          "packages/direct-load/*.md",
+          "packages/direct-load/ui5.yaml"
+        ]
+      },
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs direct-load {args.ver} {args.tag}",
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "packages/direct-load/**/*.ts"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,22 +1,16 @@
 {
-  "name": "test",
+  "name": "@fiori/test-local",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "fiori run"
+    "start": "ui5-ts serve"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@sap/ux-ui5-tooling": "^1",
-    "@ui5/cli": "^2",
-    "fiori-tools": "file:.."
-  },
-  "ui5": {
-    "dependencies": [
-      "@sap/ux-ui5-tooling",
-      "fiori-tools"
-    ]
+    "@fiori/home-page": "*",
+    "@fiori/direct-load": "*",
+    "@sap-ux/ui5-proxy-middleware": "*"
   }
 }

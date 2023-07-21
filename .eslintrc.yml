@@ -10,6 +10,7 @@ globals:
   process: readonly
 parserOptions:
   ecmaVersion: 2019
+  
 rules: {}
 overrides:
   - files: ["*.js"]

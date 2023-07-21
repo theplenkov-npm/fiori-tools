@@ -1,0 +1,15 @@
+specVersion: '3.0'
+kind: extension
+type: server-middleware
+metadata:
+  name: fiori-tools-home-page
+middleware:
+  path: src/lib/home-page.js
+---
+specVersion: '3.0'
+kind: extension
+type: server-middleware
+metadata:
+  name: fiori-tools-sandbox
+middleware:
+  path: src/lib/sandbox.js

@@ -4,3 +4,4 @@ yarn-error.log
 # package-lock.json
 yarn.lock
 test/package-lock.json
+tmp
