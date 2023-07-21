@@ -1,4 +1,4 @@
-specVersion: "3.0"
+specVersion: '3.0'
 kind: extension
 type: server-middleware
 metadata:
@@ -6,7 +6,7 @@ metadata:
 middleware:
   path: src/middlewares/fiori-tools-proxy-client.js
 ---
-specVersion: "3.0"
+specVersion: '3.0'
 kind: extension
 type: server-middleware
 metadata:
@@ -14,7 +14,7 @@ metadata:
 middleware:
   path: src/middlewares/fiori-tools-home-page.js
 ---
-specVersion: "3.0"
+specVersion: '3.0'
 kind: extension
 type: server-middleware
 metadata:
@@ -22,7 +22,7 @@ metadata:
 middleware:
   path: src/middlewares/fiori-tools-proxy-cdn.js
 ---
-specVersion: "3.0"
+specVersion: '3.0'
 kind: extension
 type: server-middleware
 metadata:

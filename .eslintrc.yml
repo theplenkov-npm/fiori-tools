@@ -3,15 +3,15 @@ env:
   commonjs: true
   es6: true
   node: true
-extends: "eslint:recommended"
+extends: 'eslint:recommended'
 globals:
   Atomics: readonly
   SharedArrayBuffer: readonly
   process: readonly
 parserOptions:
   ecmaVersion: 2019
-  
+
 rules: {}
 overrides:
-  - files: ["*.js"]
+  - files: ['*.js']
     excludedFiles: node_modules/*

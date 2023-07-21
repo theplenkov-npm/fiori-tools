@@ -1,5 +1,5 @@
 {
-    "sap.app": {
-        "id": "test.lib"
-    }
+  "sap.app": {
+    "id": "test.lib"
+  }
 }

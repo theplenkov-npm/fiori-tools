@@ -6,37 +6,24 @@
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/home-page",
         "main": "packages/home-page/src/index.ts",
         "tsConfig": "packages/home-page/tsconfig.lib.json",
-        "assets": [
-          "packages/home-page/*.md",
-          "packages/home-page/ui5.yaml"
-        ]
+        "assets": ["packages/home-page/*.md", "packages/home-page/ui5.yaml"]
       },
-      "dependsOn": [
-        "^build"
-      ]
+      "dependsOn": ["^build"]
     },
     "publish": {
       "command": "node tools/scripts/publish.mjs home-page {args.ver} {args.tag}",
-      "dependsOn": [
-        "build"
-      ]
+      "dependsOn": ["build"]
     },
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "packages/home-page/**/*.ts"
-        ]
+        "lintFilePatterns": ["packages/home-page/**/*.ts"]
       }
     }
   },
