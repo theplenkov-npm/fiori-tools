@@ -4,7 +4,7 @@
   "description": "Library of extensions for Fiori tools ( @sap/ux-ui5-tooling )",
   "main": "index.js",
   "scripts": {
-    "test": "npm run start -w test",
+    "dev": "npm run start -w test",
     "bin": "rm -rf node_modules/.bin && npm i",
     "nx:build": "nx run-many -t build"
   },
