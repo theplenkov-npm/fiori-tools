@@ -1,5 +1,5 @@
 {
-  "name": "@fiori/ui5-ts",
+  "name": "ui5-ts",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/ui5-ts/src",
   "targets": {
