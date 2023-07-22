@@ -3,6 +3,24 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/ui5-ts/src",
   "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/packages/ui5-ts",
+        "main": "packages/ui5-ts/src/index.ts",
+        "tsConfig": "packages/ui5-ts/tsconfig.json",
+        "assets": [
+          "packages/ui5-ts/*.md",
+          "packages/ui5-ts/src/index.js"
+        ]
+      },
+      "dependsOn": [
+        "^build"
+      ]
+    },
     "version": {
       "executor": "nx:run-commands",
       "options": {
