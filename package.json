@@ -9,7 +9,7 @@
     "nx:build": "nx run-many -t build",
     "prepare": "husky install",
     "nx:publish": "nx run-many --target=publish --projects=$(get-projects-to-publish)",
-    "preversion": "nx affected --target=version --base=v${npm_old_version} ${npm_new_version} --workspaces-update=false",
+    "preversion": "nx format:write && nx affected --target=version --base=v${npm_old_version} ${npm_new_version} --workspaces-update=false",
     "version": "npm install --silent --ignore-scripts --package-lock-only --fund=false --audit=false && git add -A"
   },
   "repository": {
