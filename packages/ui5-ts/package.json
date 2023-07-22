@@ -1,6 +1,6 @@
 {
   "name": "ui5-ts",
-  "version": "2.0.4",
+  "version": "2.0.6",
   "bin": "src/index.js",
   "type": "module"
 }
