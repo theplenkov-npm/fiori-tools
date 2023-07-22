@@ -6,31 +6,49 @@
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/packages/direct-load",
         "main": "packages/direct-load/src/index.ts",
         "tsConfig": "packages/direct-load/tsconfig.lib.json",
-        "assets": ["packages/direct-load/*.md", "packages/direct-load/ui5.yaml"]
+        "assets": [
+          "packages/direct-load/*.md",
+          "packages/direct-load/ui5.yaml"
+        ]
       },
-      "dependsOn": ["^build"]
-    },
-    "publish": {
-      "command": "node tools/scripts/publish.mjs direct-load {args.ver} {args.tag}",
-      "dependsOn": ["build"]
+      "dependsOn": [
+        "^build"
+      ]
     },
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["packages/direct-load/**/*.ts"]
+        "lintFilePatterns": [
+          "packages/direct-load/**/*.ts"
+        ]
       }
     },
     "version": {
-      "executor": "@jscutlery/semver:version",
+      "executor": "nx:run-commands",
       "options": {
-        "preset": "conventional"
+        "command": "npm version",
+        "cwd": "packages/direct-load"
       }
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm publish",
+        "cwd": "dist/packages/direct-load"
+      },
+      "dependsOn": [
+        "build"
+      ]
     }
   },
   "tags": []

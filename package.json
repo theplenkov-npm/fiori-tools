@@ -7,7 +7,10 @@
     "dev": "npm run start -w test",
     "bin": "rm -rf node_modules/.bin && npm i",
     "nx:build": "nx run-many -t build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "nx:publish": "nx run-many --target=publish --projects=$(get-projects-to-publish)",
+    "preversion": "nx affected --target=version --base=v${npm_old_version} ${npm_new_version} --workspaces-update=false",
+    "version": "npm install --ignore-scripts --package-lock-only --fund=false --audit=false && git add -A"
   },
   "repository": {
     "type": "git",
@@ -26,7 +29,6 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
-    "@jscutlery/semver": "^3.0.0",
     "@nx/jest": "16.5.3",
     "@nx/js": "16.5.3",
     "@nx/node": "16.5.3",
@@ -45,6 +47,7 @@
     "jest-environment-node": "^29.4.1",
     "nx": "16.5.3",
     "nx-cloud": "16.1.1",
+    "nx-publisher": "^0.0.4",
     "prettier": "^2",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
