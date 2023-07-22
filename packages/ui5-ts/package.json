@@ -1,6 +1,6 @@
 {
   "name": "@fiori/ui5-ts",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "bin": "src/index.js",
   "type": "module"
 }
