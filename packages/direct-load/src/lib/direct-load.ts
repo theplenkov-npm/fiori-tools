@@ -1,5 +1,4 @@
 import { UI5_Middleware } from '@fiori/types';
-import { Response } from 'express';
 import * as cheerio from 'cheerio';
 import { FioriToolsProxyConfigUI5 } from '@sap-ux/ui5-config';
 
@@ -35,7 +34,7 @@ export const injectUI5cdn: UI5_Middleware<Input> = function (input) {
       // Override the write method to capture the response content
       res.write = function (chunk) {
         chunks.push(Buffer.from(chunk));
-      } as Response['write'];
+      } as typeof write;
 
       // Override the end method to modify the response content before sending it
       res.end = function (data, encoding) {
@@ -47,7 +46,7 @@ export const injectUI5cdn: UI5_Middleware<Input> = function (input) {
         res.setHeader('Content-Length', Buffer.byteLength(modifiedContent));
         write.call(res, modifiedContent, encoding as never);
         end.call(res, undefined, encoding as never);
-      } as Response['end'];
+      } as typeof end;
 
       const bootstrapCDN = (html: string) => {
         const $ = cheerio.load(html);

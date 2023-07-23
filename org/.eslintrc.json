@@ -1,20 +1,16 @@
 {
-  "extends": ["../../.eslintrc.json"],
+  "root": true,
   "ignorePatterns": ["!**/*"],
-  "parserOptions": {
-    "sourceType": "module"
-  },
+  "plugins": ["@nx"],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {}
-    },
-    {
       "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@nx/typescript"],
       "rules": {}
     },
     {
       "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:@nx/javascript"],
       "rules": {}
     }
   ]

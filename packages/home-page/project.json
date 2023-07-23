@@ -29,7 +29,8 @@
       ],
       "options": {
         "lintFilePatterns": [
-          "packages/home-page/**/*.ts"
+          "packages/home-page/**/*.ts",
+          "packages/direct-load/project.json"
         ]
       }
     },
@@ -40,6 +41,18 @@
         "cwd": "packages/home-page"
       }
     },
+    "prepublish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "npm pkg delete dependencies express"
+        ],
+        "cwd": "dist/packages/direct-load"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
     "publish": {
       "executor": "nx:run-commands",
       "options": {
@@ -47,7 +60,8 @@
         "cwd": "dist/packages/home-page"
       },
       "dependsOn": [
-        "build"
+        "build",
+        "prepublish"
       ]
     }
   },

@@ -22,6 +22,18 @@
         "^build"
       ]
     },
+    "prepublish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "npm pkg delete dependencies express"
+        ],
+        "cwd": "dist/packages/direct-load"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
     "lint": {
       "executor": "@nx/linter:eslint",
       "outputs": [
@@ -29,7 +41,8 @@
       ],
       "options": {
         "lintFilePatterns": [
-          "packages/direct-load/**/*.ts"
+          "packages/direct-load/**/*.ts",
+          "packages/direct-load/project.json"
         ]
       }
     },
@@ -47,7 +60,8 @@
         "cwd": "dist/packages/direct-load"
       },
       "dependsOn": [
-        "build"
+        "build",
+        "prepublish"
       ]
     }
   },
