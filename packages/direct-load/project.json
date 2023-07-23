@@ -26,7 +26,7 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "npm pkg delete dependencies express"
+          "npm pkg delete dependencies.express"
         ],
         "cwd": "dist/packages/direct-load"
       },
