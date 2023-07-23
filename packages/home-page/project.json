@@ -47,7 +47,7 @@
         "commands": [
           "npm pkg delete dependencies express"
         ],
-        "cwd": "dist/packages/direct-load"
+        "cwd": "dist/packages/home-page"
       },
       "dependsOn": [
         "build"
