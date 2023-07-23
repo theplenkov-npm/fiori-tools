@@ -24,7 +24,7 @@
   "homepage": "https://github.com/ThePlenkov/fiori-tools#readme",
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
-    "deepmerge-ts": "^5.1.0",
+    "deepmerge-ts": "^5.1.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.0",
