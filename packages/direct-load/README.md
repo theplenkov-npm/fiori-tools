@@ -44,8 +44,11 @@ server:
         paths:
           - /**/fioriSandbox.html        
         ui5:
+          path:
+            - /resources
+            - /test-resources
           url: https://sapui5.hana.ondemand.com
-          version: 1.78.0        
+        version: 1.78.0        
 ```
 
 It is also possible to use yaml v1 tags to reuse your config from ui5-proxy-middleware / fiori-tools-proxy
@@ -61,6 +64,7 @@ server:
             - /resources
             - /test-resources
           url: https://sapui5.hana.ondemand.com
+        version: 1.115.0
     - name: fiori-tools-proxy-cdn
       beforeMiddleware: ui5-proxy-middleware
       configuration:

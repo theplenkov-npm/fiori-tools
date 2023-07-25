@@ -18,7 +18,9 @@
       "@fiori/direct-load": ["packages/direct-load/src/index.ts"],
       "@fiori/home-page": ["packages/home-page/src/index.ts"],
       "@fiori/types": ["packages/types/src/index.ts"]
-    }
+    },
+    "traceResolution": false,
+    "esModuleInterop": true
   },
   "exclude": ["node_modules", "tmp"],
   "ts-node": {
