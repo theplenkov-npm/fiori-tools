@@ -11,3 +11,4 @@ It's using embedded ts-node esm loader allowing us to resolve _.js references to
 
 - it requires ts-node to be installed globally or as a dependency
 - it supports only middlewares developed as ESM modules
+- it requires dotenv to init your environment variables from .env file in your cwd
