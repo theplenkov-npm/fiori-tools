@@ -1,11 +1,15 @@
 {
   "name": "@fiori/ui5-ts",
   "version": "2.0.13",
-  "bin": "src/index.js",
+  "bin": "src/ui5-ts.js",
   "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/theplenkov-npm/fiori-tools",
     "directory": "packages/ui5-ts"
+  },
+  "peerDependencies": {
+    "dotenv": "",
+    "@ui5/cli": ""
   }
 }

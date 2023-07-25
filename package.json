@@ -29,6 +29,7 @@
     "path-to-regexp": "^6.2.1"
   },
   "devDependencies": {
+    "dotenv": "^16.3.1",
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
     "@nx/eslint-plugin": "16.5.5",

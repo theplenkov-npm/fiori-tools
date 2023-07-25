@@ -11,10 +11,10 @@
       "options": {
         "outputPath": "dist/packages/ui5-ts",
         "main": "packages/ui5-ts/src/index.ts",
-        "tsConfig": "packages/ui5-ts/tsconfig.json",
+        "tsConfig": "packages/ui5-ts/tsconfig.lib.json",
         "assets": [
           "packages/ui5-ts/*.md",
-          "packages/ui5-ts/src/index.js"
+          "packages/ui5-ts/src/ui5-ts.js"
         ]
       },
       "dependsOn": [

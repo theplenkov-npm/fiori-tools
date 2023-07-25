@@ -4,8 +4,15 @@
     "module": "NodeNext",
     "moduleResolution": "Node",
     "target": "ESNext",
-    "esModuleInterop": false
+    "esModuleInterop": false,
+    "declaration": true,
+    "strict": true,
   },
   "files": [],
-  "include": []
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    }
+  ]
 }

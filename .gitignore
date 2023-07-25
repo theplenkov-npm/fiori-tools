@@ -6,3 +6,4 @@ yarn.lock
 test/package-lock.json
 tmp
 git_modules
+.env
