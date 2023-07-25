@@ -1,0 +1,28 @@
+{
+    "applications": {
+        "GL-lineItems": {
+            "title": "Manage Customer Line Items"
+        }
+    },
+    "services": {
+        "LaunchPage": {
+            "adapter": {
+                "config": {
+                    "groups": []
+                }
+            }
+        },
+        "NavTargetResolution": {
+            "adapter": {
+                "config": {
+                    "applications": {
+                        "GL-lineItems": {
+                            "additionalInformation": "SAPUI5.Component=fin.ar.lineitems.display",
+                            "url": "/sap/bc/ui5_ui5/sap/fin_cust_lits"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

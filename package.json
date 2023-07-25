@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/ThePlenkov/fiori-tools#readme",
   "dependencies": {
+    "@sap-ux/backend-proxy-middleware": "^0.6.64",
     "cheerio": "^1.0.0-rc.12",
     "deepmerge-ts": "^5.1.0",
     "path-to-regexp": "^6.2.1"
