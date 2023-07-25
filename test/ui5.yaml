@@ -13,6 +13,7 @@ server:
             - /resources
             - /test-resources
           url: https://sapui5.hana.ondemand.com
+          version: 1.115.0
     - name: fiori-tools-proxy-cdn
       beforeMiddleware: ui5-proxy-middleware
       configuration:

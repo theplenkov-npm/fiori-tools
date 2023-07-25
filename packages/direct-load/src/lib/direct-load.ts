@@ -1,6 +1,8 @@
 import { UI5_Middleware } from '@fiori/types';
 import * as cheerio from 'cheerio';
 import { FioriToolsProxyConfigUI5 } from '@sap-ux/ui5-config';
+// import { urlToHttpOptions } from 'node:url';
+import * as path from 'node:path';
 
 interface Input {
   paths?: Array<string>;
@@ -12,7 +14,7 @@ export const injectUI5cdn: UI5_Middleware<Input> = function (input) {
     (mountPath) => {
       const regexPattern = `^${mountPath.replace('**', '.*')}$`;
       return new RegExp(regexPattern);
-    },
+    }
   );
 
   return (req, res, next) => {
@@ -29,7 +31,8 @@ export const injectUI5cdn: UI5_Middleware<Input> = function (input) {
       // Create a variable to store the modified content
       const { write, end } = res;
       const chunks: Buffer[] = [];
-      const cdnUrl = new URL(req.url, input.options.configuration?.ui5?.url);
+
+      const cdnUrl = new URL( path.join('/',input.options.configuration?.ui5?.version || '', req.url ),input.options.configuration?.ui5?.url);
 
       // Override the write method to capture the response content
       res.write = function (chunk) {
